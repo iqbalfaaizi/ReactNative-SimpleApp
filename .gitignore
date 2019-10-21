@@ -68,3 +68,4 @@ ios/
 babel.config.js
 metro.config.js
 package-lock.json
+.buckconfig
