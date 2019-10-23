@@ -43,7 +43,9 @@ export default class Login extends React.Component {
                     <TextInput style={styles.inputTxt} secureTextEntry={true} placeholder="Password" placeholderTextColor="#0B81C7"/>
                 </View>
 
-                <TouchableOpacity style={styles.btnConfirm} onPress={() => this.props.navigation.navigate('Dashboard')} >
+                <TouchableOpacity style={styles.btnConfirm}
+                    onPress={() => this.props.navigation.navigate('Dashboard', {email: this.state.email, name: 'Admin'})} 
+                >
                     <Text style={{color: '#fff'}}>Log In</Text>
                 </TouchableOpacity>
             </View>

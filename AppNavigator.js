@@ -5,17 +5,15 @@ import {createStackNavigator} from 'react-navigation-stack'
 import Signup from './screens/Signup'
 import Login from './screens/Login'
 import Home from './screens/Home'
-import DashboardScr from './screens/DashboardScreen'
+import DashboardNav from './screens/DashboardNav'
 
-class DashboardScreen extends React.Component{
+class DashboardScreen extends React.Component {
     static navigationOptions = {
-        header: null
+        header:null
     }
-    render() {
+    render(){
         return(
-            <>
-            <DashboardScr />
-            </>
+            <DashboardNav />
         )
     }
 }

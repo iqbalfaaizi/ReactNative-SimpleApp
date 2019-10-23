@@ -1,21 +1,22 @@
 import React from 'react'
-import {View} from 'react-native'
+import{View,Text} from 'react-native'
 import {createAppContainer} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation-stack'
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
 import AntIcon from 'react-native-vector-icons/AntDesign'
 
-import DashboardPage from './Dashboard'
-import ProfilePage from './Profile'
+import Dashboard from './Dashboard'
+import Profile from './Profile'
+import Pokedex from './Pokedex'
 
-class DshboardScreen extends React.Component {
-    static navigationOptions = {
-        header: null
-    }
-}
+const DashNav = createStackNavigator({
+    Dashboard: {screen: Dashboard},
+    Pokedex: {screen: Pokedex},
+},{initialRouteName: 'Dashboard'},{defaultNavigationOptions:{header: null}})
 
-const RootStack = createMaterialBottomTabNavigator({
+const DashboardNav = createMaterialBottomTabNavigator({
     Dashboard: {
-        screen: DashboardPage,
+        screen: DashNav,
         navigationOptions: {
             tabBarLabel: 'Dashboard',
             tabBarIcon: ({ tintColor }) => (
@@ -27,7 +28,7 @@ const RootStack = createMaterialBottomTabNavigator({
         }
     },
     Profile: {
-        screen: ProfilePage,
+        screen: Profile,
         navigationOptions: {
             tabBarLabel: 'Profile',
             tabBarIcon: ({ tintColor }) => (
@@ -39,14 +40,12 @@ const RootStack = createMaterialBottomTabNavigator({
             inactiveColor: '#a5a5a5',
             barStyle: {backgroundColor: '#0B81C7'},
         }
-    }
+    },
 },{
-    header: null,
     initialRouteName: "Dashboard",
     activeColor: '#fff',
     inactiveColor: '#a5a5a5',
     barStyle: {backgroundColor: '#0B81C7'},
 })
 
-const Container = createAppContainer(RootStack);
-export default Container;
+export default createAppContainer(DashboardNav)

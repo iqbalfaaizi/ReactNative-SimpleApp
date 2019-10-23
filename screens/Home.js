@@ -22,24 +22,22 @@ export default class Home extends React.Component {
         }}>
             
             <View style={styles.container} />
+            
+            <View style={styles.btngroup}>
+                {/* Sign UP Button */}
+                <TouchableOpacity 
+                    style={[styles.btnsignup,styles.buttonBtm]}
+                    onPress={() => this.props.navigation.navigate('Signup')}>
+                    <Text style={[{color: '#fff',},styles.btntxt]}>SIGNUP</Text>
+                </TouchableOpacity>
 
-            <View>
-                <View style={styles.btngroup}>
-                    {/* Sign UP Button */}
-                    <TouchableOpacity 
-                        style={[styles.btnsignup,styles.buttonBtm]}
-                        onPress={() => this.props.navigation.navigate('Signup')}>
-                        <Text style={[{color: '#fff',},styles.btntxt]}>SIGNUP</Text>
-                    </TouchableOpacity>
-
-                    {/* Sign IN Button */}
-                    <TouchableOpacity 
-                        style={[{backgroundColor: '#fff'},styles.buttonBtm]}
-                        onPress={() => this.props.navigation.navigate('Login')}
-                        >
-                        <Text style={[{color:'#0B81C7'},styles.btntxt]}>LOGIN</Text>
-                    </TouchableOpacity>
-                </View>
+                {/* Sign IN Button */}
+                <TouchableOpacity 
+                    style={[{backgroundColor: '#fff'},styles.buttonBtm]}
+                    onPress={() => this.props.navigation.navigate('Login')}
+                    >
+                    <Text style={[{color:'#0B81C7'},styles.btntxt]}>LOGIN</Text>
+                </TouchableOpacity>
             </View>
         </ImageBackground>
         </>
