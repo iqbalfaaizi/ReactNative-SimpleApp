@@ -14,7 +14,15 @@ const DashNav = createStackNavigator({
     Pokedex: {screen: Pokedex},
 },{initialRouteName: 'Dashboard'},{defaultNavigationOptions:{header: null}})
 
-const DashboardNav = createMaterialBottomTabNavigator({
+DashNav.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    if (navigation.state.index > 0 ){
+        tabBarVisible = false;
+    }
+    return {tabBarVisible};
+}
+
+const DashboardStack = createMaterialBottomTabNavigator({
     Dashboard: {
         screen: DashNav,
         navigationOptions: {
@@ -48,4 +56,4 @@ const DashboardNav = createMaterialBottomTabNavigator({
     barStyle: {backgroundColor: '#0B81C7'},
 })
 
-export default createAppContainer(DashboardNav)
+export default createAppContainer(DashboardStack)
