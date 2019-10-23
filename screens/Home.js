@@ -6,25 +6,20 @@ import {
     StyleSheet,
     ImageBackground,
     StatusBar,
-    ScrollView,
 } from 'react-native'
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import Signup from '../screens/Signup'
-import Login from '../screens/Login'
 
-class HomeScreen extends React.Component {
+export default class Home extends React.Component {
     static navigationOptions = {
         header: null
     }
     render() {
         return(
-            <>
-            <StatusBar backgroundColor="#0B81C7" />
-            <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
-               width:'100%' ,
-               height:'100%'
-            }}>
+        <>
+        <StatusBar backgroundColor="#0B81C7" />
+        <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
+            width:'100%',
+            height:'100%'
+        }}>
             
             <View style={styles.container} />
 
@@ -46,76 +41,10 @@ class HomeScreen extends React.Component {
                     </TouchableOpacity>
                 </View>
             </View>
-            </ImageBackground>
-            </>
-        )
-    }
-}
-
-class SignupScreen extends React.Component {
-    static navigationOptions ={
-        header: null
-    }
-
-    render() {
-        return(
-            <>
-            <ScrollView style={{backgroundColor:'#0B81C7'}}>
-                <View style={styles.container}>
-                    <Signup />
-                </View>
-
-                <View style={{marginBottom: 20}}>
-                    <View style={styles.txtFooter}>
-                        <Text style={{color: '#fff', fontFamily: 'sans-serif-thin'}}>
-                            Already registered?
-                        </Text>
-                    </View>
-
-                    <TouchableOpacity 
-                        style={styles.btnLogin}
-                        onPress={() => this.props.navigation.navigate('Login')}
-                        >
-                            <Text style={{color: '#fff'}}>Log In</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-            </>
-        )
-    }
-}
-
-class LoginScreen extends React.Component {
-    static navigationOptions = {
-        header: null
-    }
-
-    render(){
-        return(
-        <>
-            <ScrollView style={{backgroundColor:'#fff'}}>
-                <View style={styles.container}>
-                    <Login />
-                </View>
-
-                <View style={{marginBottom: 20}}>
-                    <View style={styles.txtFooter}>
-                        <Text style={{color: '#0B81C7', fontFamily: 'sans-serif-thin'}}>
-                            Not a member yet?
-                        </Text>
-                    </View>
-                    <TouchableOpacity 
-                        style={styles.btnRegister}
-                        onPress={() => this.props.navigation.navigate('Signup')}
-                        >
-                            <Text style={{color: '#0B81C7'}}>Sign Up</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
+        </ImageBackground>
         </>
         )
     }
-
 }
 
 const styles = StyleSheet.create({
@@ -168,11 +97,3 @@ const styles = StyleSheet.create({
         alignItems: 'center', marginTop: 40, marginBottom: 10
     }
 })
-
-const AppNavigator = createStackNavigator({
-    Home: {screen: HomeScreen},
-    Signup: {screen: SignupScreen},
-    Login: {screen: LoginScreen},
-},{initialRouteName: 'Home',});
-
-export default createAppContainer(AppNavigator);

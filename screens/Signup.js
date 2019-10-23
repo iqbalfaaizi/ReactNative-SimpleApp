@@ -6,9 +6,14 @@ import {
     TextInput,
     TouchableOpacity,
     Alert,
+    ScrollView,
 } from 'react-native'
 
 export default class Signup extends React.Component {
+    static navigationOptions = {
+        header: null
+    }
+
     constructor (props) {
         super(props)
 
@@ -28,7 +33,11 @@ export default class Signup extends React.Component {
 
     render() {
         return(
-            <>
+        <>
+        <ScrollView style={{backgroundColor:'#0B81C7'}}>
+
+            {/* Content */}
+            <View style={styles.container}>
                 <Text style={styles.hdTitle}>Register</Text>
                 
                 <View style={styles.inputGroup}>
@@ -47,6 +56,24 @@ export default class Signup extends React.Component {
                 >
                     <Text style={{color: '#0B81C7'}}>Register</Text>
                 </TouchableOpacity>
+            </View>
+
+            {/* Login Button */}
+            <View style={{marginBottom: 20}}>
+                <View style={styles.txtFooter}>
+                    <Text style={{color: '#fff', fontFamily: 'sans-serif-thin'}}>
+                        Already registered?
+                    </Text>
+                </View>
+
+                <TouchableOpacity 
+                    style={styles.btnLogin}
+                    onPress={() => this.props.navigation.navigate('Login')}
+                >
+                        <Text style={{color: '#fff'}}>Log In</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
         </>
         )
     }
@@ -55,7 +82,6 @@ export default class Signup extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: '#0B81C7',
     },
     hdTitle:{
         color: '#fff',
@@ -71,7 +97,7 @@ const styles = StyleSheet.create({
     inputTxt:{
         borderBottomWidth: 1,
         borderBottomColor: '#fff',
-        marginBottom: 30,
+        marginBottom: 20,
         opacity: .60,
         fontFamily: 'sans-serif-light'
     },
@@ -85,6 +111,10 @@ const styles = StyleSheet.create({
         borderRadius: 150,
         marginTop: 10,
     },
+
+    txtFooter: {
+        alignItems: 'center', marginTop: 30, marginBottom: 10
+    },
     btnLogin: {
         width: '80%',
         height: 45,
@@ -94,6 +124,5 @@ const styles = StyleSheet.create({
         borderRadius: 150,
         borderWidth: 1,
         borderColor: '#fff',
-        marginTop: 10,
-    }
+    },
 })

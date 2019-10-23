@@ -7,21 +7,13 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
 
-import Home from './screens/Home';
+import AppNavigator from './AppNavigator';
 
 export default class App extends React.Component {
   render() {
     return(
-      <Home />
+      <AppNavigator />
     )
   }
 }

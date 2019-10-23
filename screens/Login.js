@@ -6,9 +6,14 @@ import {
     TextInput,
     TouchableOpacity,
     Alert,
+    ScrollView,
 } from 'react-native'
 
 export default class Login extends React.Component {
+    static navigationOptions = {
+        header: null
+    }
+
     constructor (props) {
         super (props)
 
@@ -24,21 +29,39 @@ export default class Login extends React.Component {
     render (){
         return(
         <>
-            <Text style={styles.hdTitle}>Log In</Text>
-            
-            <View style={styles.inputGroup}>
-                <TextInput 
-                    style={styles.inputTxt} 
-                    placeholder="Your Email" placeholderTextColor="#0B81C7"
-                    returnKeyLabel={"next"}
-                    onChangeText={(text) => this.setState({ email: text })}
-                />
-                <TextInput style={styles.inputTxt} secureTextEntry={true} placeholder="Password" placeholderTextColor="#0B81C7"/>
+        <ScrollView style={{backgroundColor:'#fff'}}>
+            <View style={styles.container}>
+                <Text style={styles.hdTitle}>Log In</Text>
+                
+                <View style={styles.inputGroup}>
+                    <TextInput 
+                        style={styles.inputTxt} 
+                        placeholder="Your Email" placeholderTextColor="#0B81C7"
+                        returnKeyLabel={"next"}
+                        onChangeText={(text) => this.setState({ email: text })}
+                    />
+                    <TextInput style={styles.inputTxt} secureTextEntry={true} placeholder="Password" placeholderTextColor="#0B81C7"/>
+                </View>
+
+                <TouchableOpacity style={styles.btnConfirm} onPress={() => this.props.navigation.navigate('Dashboard')} >
+                    <Text style={{color: '#fff'}}>Log In</Text>
+                </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.btnConfirm} onPress={() => this._handlePress()} >
-                <Text style={{color: '#fff'}}>Log In</Text>
-            </TouchableOpacity>
+            <View style={{marginBottom: 20}}>
+                <View style={styles.txtFooter}>
+                    <Text style={{color: '#0B81C7', fontFamily: 'sans-serif-thin'}}>
+                        Not a member yet?
+                    </Text>
+                </View>
+                <TouchableOpacity 
+                    style={styles.btnRegister}
+                    onPress={() => this.props.navigation.navigate('Signup')}
+                    >
+                        <Text style={{color: '#0B81C7'}}>Sign Up</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
         </>
         )
     }
@@ -47,7 +70,6 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: '#0B81C7',
     },
     hdTitle:{
         color: '#0B81C7',
@@ -87,5 +109,19 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff',
         marginTop: 10,
+    },
+
+    btnRegister: {
+        width: '80%',
+        height: 45,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 150,
+        borderWidth: 1,
+        borderColor: '#0B81C7',
+    },
+    txtFooter: {
+        alignItems: 'center', marginTop: 40, marginBottom: 10
     }
 })
