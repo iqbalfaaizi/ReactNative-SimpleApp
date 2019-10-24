@@ -4,16 +4,21 @@ import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
 import AntIcon from 'react-native-vector-icons/AntDesign'
+import {Icon} from 'react-native-elements'
 
 import Dashboard from './Dashboard'
 import Profile from './Profile'
 import Pokedex from './Pokedex'
+import Setting from './Setting'
+import Username from './Settings/SetUsername'
 
+//Dashboard screen navigation
 const DashNav = createStackNavigator({
     Dashboard: {screen: Dashboard},
     Pokedex: {screen: Pokedex},
 },{initialRouteName: 'Dashboard'},{defaultNavigationOptions:{header: null}})
 
+// Hiding bottom bar from child screen
 DashNav.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true;
     if (navigation.state.index > 0 ){
@@ -22,6 +27,30 @@ DashNav.navigationOptions = ({ navigation }) => {
     return {tabBarVisible};
 }
 
+//Setting Screen Navigation
+const SettingNav = createStackNavigator({
+    Setting: {
+        screen: Setting,
+        navigationOptions: {
+            title : 'Settings',
+            headerStyle: { backgroundColor: '#0B81C7', },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold', left: -10},
+            headerLeft: (
+                <Icon 
+                name='setting' 
+                type='antdesign'
+                color='#fff'
+                paddingLeft={16}
+                size={35}
+                />
+            )
+        }
+    },
+    Username: {screen: Username}
+},{initialRouteName: 'Setting'},{defaultNavigationOptions:{header: null}})
+
+//Bottom bar tabs navigation
 const DashboardStack = createMaterialBottomTabNavigator({
     Dashboard: {
         screen: DashNav,
@@ -49,6 +78,20 @@ const DashboardStack = createMaterialBottomTabNavigator({
             barStyle: {backgroundColor: '#0B81C7'},
         }
     },
+    Setting: {
+        screen: SettingNav,
+        navigationOptions: {
+            tabBarLabel: 'Setting',
+            tabBarIcon: ({ tintColor }) => (
+                <View>
+                    <AntIcon style={[{color: tintColor}]} size={25} name={'setting'} />
+                </View>
+            ),
+            activeColor: '#fff',
+            inactiveColor: '#a5a5a5',
+            barStyle: {backgroundColor: '#0B81C7'},
+        }
+    }
 },{
     initialRouteName: "Dashboard",
     activeColor: '#fff',

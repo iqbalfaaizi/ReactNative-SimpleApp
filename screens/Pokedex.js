@@ -3,7 +3,7 @@ import {View,Text,FlatList,ActivityIndicator,TouchableOpacity,StyleSheet,Image} 
 
 export default class Pokedex extends Component {
     static navigationOptions ={
-        title : 'Simple Pokédex',
+        title : 'Simple Pokédex API',
         headerStyle: { backgroundColor: '#0B81C7' },
         headerTintColor: '#fff',
         headerTitleStyle: { fontWeight: 'bold', },
@@ -32,7 +32,7 @@ export default class Pokedex extends Component {
         return(
             <TouchableOpacity style={{backgroundColor: 'transparent'}}>
                 <View  style={styles.listItemContainer}>
-                    <Image source={{uri: 'http://pngimg.com/uploads/pokeball/pokeball_PNG8.png'}} 
+                    <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG'}} 
                             style={styles.pokeImage}/>
                     <Text style={styles.pokeItemHeader}>
                        {data.item.name}
