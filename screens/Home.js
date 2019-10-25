@@ -16,11 +16,23 @@ export default class Home extends React.Component {
         return(
         <>
         <StatusBar backgroundColor="#0B81C7" />
-        <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
+       {/*  <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
             width:'100%',
             height:'100%'
-        }}>
-            
+        }}> */}
+            <View style={{
+                backgroundColor:'#0B81C7',
+                width: '100%', height:'100%'
+            }}>
+            <Text style={{
+                color: '#fff',
+                fontSize:80,
+                fontWeight: 'bold',
+                fontFamily: 'Modak-Regular',
+                marginTop: 230,
+                marginLeft:50,
+                opacity: .50,
+            }}>hello {'\n'}<Text>world.</Text></Text>
             <View style={styles.container} />
             
             <View style={styles.btngroup}>
@@ -39,7 +51,7 @@ export default class Home extends React.Component {
                     <Text style={[{color:'#0B81C7'},styles.btntxt]}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
-        </ImageBackground>
+        </View>
         </>
         )
     }

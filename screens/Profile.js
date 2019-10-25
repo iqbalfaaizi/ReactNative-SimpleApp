@@ -5,6 +5,8 @@ import {
     TouchableOpacity,
 } from 'react-native'
 
+import Setting from './Setting'
+
 export default class Profile extends Component {
     render(){
         return(

@@ -6,11 +6,15 @@ import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom
 import AntIcon from 'react-native-vector-icons/AntDesign'
 import {Icon} from 'react-native-elements'
 
+//Dashboard Page
 import Dashboard from './Dashboard'
-import Profile from './Profile'
 import Pokedex from './Pokedex'
+// import Cats from './CatsAPI'
+//Setting Page
 import Setting from './Setting'
 import Username from './Settings/SetUsername'
+
+import Profile from './Profile'
 
 //Dashboard screen navigation
 const DashNav = createStackNavigator({

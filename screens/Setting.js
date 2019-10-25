@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import { View, Text } from 'react-native'
-import {ListItem, Icon, Button} from 'react-native-elements'
+import { View, Text, ScrollView } from 'react-native'
+import {ListItem, Icon, Button, SearchBar } from 'react-native-elements'
 
 const list = [
   {
@@ -14,62 +14,112 @@ const list = [
     ScreenName: 'Username'
   },
   {
+    title: 'Notification',
+    icon: 'bell'
+  },
+  {
+    title: 'Report Bug',
+    icon: 'smile',
+  },
+]
+
+const darkMode = [
+  {
     title: 'Dark Mode',
     icon: 'moon',
     ScreenName: 'Username'
   },
 ]
 
-const list2 = [
-    {
-      title: 'Notification',
-      icon: 'bell'
-    },
-    {
-      title: 'Report Bug',
-      icon: 'smile',
-    },
-  ]
-
 export default class Setting extends Component {
-    goToOtherScreen(ScreenName) {
-        const {navigation} = this.props
-        navigation.navigate(ScreenName);
+  constructor(){
+    super();
+    this.state = {
+      search: '',
+      toggle: 'toggle-off',
+      color: '',
+      textColor:'',
     }
+  }
 
-    render() {
-        return (
-        <>
-            <View>
-                {
-                    list.map((item, i) => (
-                    <ListItem
-                        key={i}
-                        title={item.title}
-                        leftIcon={{ name: item.icon, type: 'feather' }}
-                        bottomDivider
-                        chevron
-                        button 
-                        onPress={() => this.goToOtherScreen(item.ScreenName)}
-                    />
-                    ))
-                }
-            </View>
+  updateSearch = search => {
+    this.setState({search})
+  }
 
-            <View style={{marginTop: 20}}>
-            {
-                list2.map((item, i) => (
-                <ListItem
+  searchBarDark(){
+    const {search} = this.state;
+    if(this.state.toggle === 'toggle-off'){
+      return(
+        <SearchBar
+            lightTheme
+            round
+            placeholder="Search..."
+            onChangeText={this.updateSearch}
+            value={search}
+          />
+      )
+    }else {
+      return(
+        <SearchBar
+            darkTheme
+            round
+            placeholder="Search..."
+            onChangeText={this.updateSearch}
+            value={search}
+          />
+      )
+    }
+  }
+
+  goToOtherScreen(ScreenName) {
+      const {navigation} = this.props
+      navigation.navigate(ScreenName);
+  }
+
+  toggleDarkMode(){
+    if(this.state.toggle === 'toggle-off'){
+      this.setState({toggle:'toggle-on', color:'#333',textColor:'#fff'})
+    }else if(this.state.toggle === 'toggle-on'){
+      this.setState({toggle:'toggle-off', color:'#fff',textColor:'#333'})
+    }
+  }
+
+  render() {
+      return (
+      <>
+        {this.searchBarDark()}
+          <ScrollView style={{backgroundColor: this.state.color}}>
+              {
+                  list.map((item, i) => (
+                  <ListItem
+                    containerStyle={{backgroundColor: this.state.color}}
                     key={i}
                     title={item.title}
-                    leftIcon={{ name: item.icon, type: 'feather' }}
+                    titleStyle={{color:this.state.textColor}}
+                    leftIcon={{ name: item.icon, type: 'feather', color: this.state.textColor }}
                     bottomDivider
                     chevron
-                />
+                    button 
+                    onPress={() => this.goToOtherScreen(item.ScreenName)}
+                  />
+                  ))
+              }
+              {
+                darkMode.map((item, i) =>(
+                  <ListItem
+                    containerStyle={{backgroundColor: this.state.color}}
+                    key={i}
+                    title={item.title}
+                    titleStyle={{color:this.state.textColor}}
+                    leftIcon={{ name: item.icon, type: 'feather', color: this.state.textColor }}
+                    bottomDivider
+                    onPress={() => this.toggleDarkMode() }
+                    rightElement={<Icon containerStyle={{ alignSelf: 'flex-start' }} type="font-awesome" color="#C8C8C8" name={this.state.toggle} />}
+                  />
                 ))
-            }
-            </View>
-        </>
-        )
-    }
+              }
+          </ScrollView>
+      </>
+      )
+  }
 }

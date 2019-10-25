@@ -9,7 +9,6 @@ import {
     StatusBar,
 } from 'react-native'
 
-
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 export default class Dashboard extends Component {
@@ -57,7 +56,9 @@ export default class Dashboard extends Component {
 
                         <View style={[styles.contentContainer,{marginTop: 100}]}>
                 
-                            <TouchableOpacity style={[styles.content,{marginRight:15}]}>
+                            <TouchableOpacity style={[styles.content,{marginRight:15}]}
+                                onPress={() => this.props.navigation.navigate('Cats')}
+                            >
                                 <View style={[styles.icon,{backgroundColor: '#4284F3'}]}>
                                     <MaterialIcon style={{color:'#fff'}} size={40} name={'g-translate'} />
                                 </View>
