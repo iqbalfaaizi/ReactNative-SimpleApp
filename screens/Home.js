@@ -1,12 +1,7 @@
 import React from 'react'
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    StyleSheet,
-    ImageBackground,
-    StatusBar,
-} from 'react-native'
+import { View, Text, TouchableOpacity, StatusBar, } from 'react-native'
+
+import styles from '../assets/styles/StyleHome'
 
 export default class Home extends React.Component {
     static navigationOptions = {
@@ -24,15 +19,7 @@ export default class Home extends React.Component {
                 backgroundColor:'#0B81C7',
                 width: '100%', height:'100%'
             }}>
-            <Text style={{
-                color: '#fff',
-                fontSize:80,
-                fontWeight: 'bold',
-                fontFamily: 'Modak-Regular',
-                marginTop: 230,
-                marginLeft:50,
-                opacity: .50,
-            }}>hello {'\n'}<Text>world.</Text></Text>
+            <Text style={styles.bgtext}>hello {'\n'}<Text>world.</Text></Text>
             <View style={styles.container} />
             
             <View style={styles.btngroup}>
@@ -57,53 +44,3 @@ export default class Home extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    btngroup: { 
-        height: 110,
-        marginBottom: 30,
-        marginHorizontal: 10
-    },
-    btnsignup:{
-        marginBottom: 10,
-        borderWidth: 1,
-        borderColor: '#fff',
-    },
-    btntxt: {
-        fontWeight: 'bold',
-        fontSize: 13,
-        letterSpacing: 5
-    },
-    buttonBtm: {
-        width:'100%',
-        height: '50%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 150,
-    },
-    btnLogin: {
-        width: '80%',
-        height: 45,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 150,
-        borderWidth: 1,
-        borderColor: '#fff',
-    },
-    btnRegister: {
-        width: '80%',
-        height: 45,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 150,
-        borderWidth: 1,
-        borderColor: '#0B81C7',
-    },
-    txtFooter: {
-        alignItems: 'center', marginTop: 40, marginBottom: 10
-    }
-})
