@@ -1,12 +1,6 @@
 import React, {Component} from 'react'
 import {
-    View,
-    Text,
-    ScrollView,
-    TouchableOpacity,
-    ImageBackground,
-    StyleSheet,
-    StatusBar,
+    View, Text, ScrollView, TouchableOpacity, ImageBackground, StatusBar,
 } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import styles from '../assets/styles/StyleDashboard'
@@ -16,7 +10,7 @@ export default class Dashboard extends Component {
         header: null
     }
     render(){
-        const email =  this.props.navigation.getParam('email', 'Guest')
+        const email =  this.props.navigation.getParam(email, 'Guest')
         return(
         <>
         <StatusBar backgroundColor='#0B81C7' />
@@ -57,27 +51,22 @@ export default class Dashboard extends Component {
                         <View style={[styles.contentContainer,{marginTop: 100}]}>
                 
                             <TouchableOpacity style={[styles.content,{marginRight:15}]}
-                                onPress={() => this.props.navigation.navigate('Cats')}
-                            >
+                                onPress={() => this.props.navigation.navigate('ReduxTest')}>
                                 <View style={[styles.icon,{backgroundColor: '#4284F3'}]}>
-                                    <MaterialIcon style={{color:'#fff'}} size={40} name={'g-translate'} />
+                                    <MaterialIcon style={{color:'#fff'}} size={40} name={'language'} />
                                 </View>
 
-                                <Text style={styles.contentTxt}>
-                                    Translate Something
-                                </Text>
+                                <Text style={styles.contentTxt}> Redux </Text>
                             </TouchableOpacity>
 
+                            {/* Pokedex */}
                             <TouchableOpacity style={[styles.content,{marginLeft:15}]}
-                                onPress={() => this.props.navigation.navigate('Pokedex')}
-                            >
+                                onPress={() => this.props.navigation.navigate('Pokedex')}>
+
                                 <View style={[styles.icon,{backgroundColor: 'red'}]}>
                                     <MaterialIcon style={{color:'#fff'}} size={40} name={'pregnant-woman'} />
                                 </View>
-
-                                <Text style={styles.contentTxt}>
-                                    Pokedex
-                                </Text>
+                                <Text style={styles.contentTxt}>Pokedex</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

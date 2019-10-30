@@ -11,15 +11,14 @@ export default class Home extends React.Component {
         return(
         <>
         <StatusBar backgroundColor="#0B81C7" />
-       {/*  <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
-            width:'100%',
-            height:'100%'
-        }}> */}
-            <View style={{
-                backgroundColor:'#0B81C7',
-                width: '100%', height:'100%'
-            }}>
-            <Text style={styles.bgtext}>hello {'\n'}<Text>world.</Text></Text>
+        {/*  <ImageBackground source={require('../assets/images/bg2.jpg')} style={{
+                width:'100%',
+                height:'100%'
+            }}> */}
+        <View style={{backgroundColor:'#0B81C7',width: '100%', height:'100%'}}>
+
+            <Text style={styles.bgtext}>hello {'\n'}world.</Text>
+            
             <View style={styles.container} />
             
             <View style={styles.btngroup}>

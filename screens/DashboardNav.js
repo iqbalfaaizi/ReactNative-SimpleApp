@@ -9,7 +9,7 @@ import {Icon} from 'react-native-elements'
 //Dashboard Page
 import Dashboard from './Dashboard'
 import Pokedex from './Pokedex'
-// import Cats from './CatsAPI'
+import ReduxTest from './ReduxTest'
 //Setting Page
 import Setting from './Setting'
 import Username from './Settings/SetUsername'
@@ -20,6 +20,7 @@ import Profile from './Profile'
 const DashNav = createStackNavigator({
     Dashboard: {screen: Dashboard},
     Pokedex: {screen: Pokedex},
+    ReduxTest: {screen: ReduxTest},
 },{initialRouteName: 'Dashboard'},{defaultNavigationOptions:{header: null}})
 
 // Hiding bottom bar from child screen
