@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, } from 'react-native'
 import styles from '../assets/styles/StyleSignup'
 
 export default class Signup extends React.Component {
@@ -20,7 +20,7 @@ export default class Signup extends React.Component {
     signupPress = async () => {
         const { name, username, email, password, cpassword } = this.state
         try {
-            let response = await fetch('http://192.168.56.1:9999/auth/register-user',{
+            let response = await fetch('http://192.168.84.2:9999/auth/register-user',{
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
