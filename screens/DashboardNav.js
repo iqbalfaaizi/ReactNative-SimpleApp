@@ -7,20 +7,22 @@ import AntIcon from 'react-native-vector-icons/AntDesign'
 import {Icon} from 'react-native-elements'
 
 //Dashboard Page
-import Dashboard from './Dashboard'
-import Pokedex from './Pokedex'
-import ReduxTest from './ReduxTest'
+import Dashboard from './bottom-tabs/Dashboard'
+import Pokedex from './dashboard/Pokedex'
+import ReduxTest from './dashboard/ReduxTest'
+import Users from './dashboard/usersData'
 //Setting Page
-import Setting from './Setting'
-import Username from './Settings/SetUsername'
+import Setting from './bottom-tabs/Setting'
+import Username from './settings/SetUsername'
 
-import Profile from './Profile'
+import Profile from './bottom-tabs/Profile'
 
 //Dashboard screen navigation
 const DashNav = createStackNavigator({
     Dashboard: {screen: Dashboard},
     Pokedex: {screen: Pokedex},
     ReduxTest: {screen: ReduxTest},
+    Users: {screen:Users},
 },{initialRouteName: 'Dashboard'},{defaultNavigationOptions:{header: null}})
 
 // Hiding bottom bar from child screen

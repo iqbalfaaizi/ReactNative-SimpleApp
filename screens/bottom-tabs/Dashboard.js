@@ -3,7 +3,8 @@ import {
     View, Text, ScrollView, TouchableOpacity, ImageBackground, StatusBar,
 } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import styles from '../assets/styles/StyleDashboard'
+import { Icon } from 'react-native-elements'
+import styles from '../../assets/styles/StyleDashboard'
 
 export default class Dashboard extends Component {
     static navigationOptions = {
@@ -16,7 +17,7 @@ export default class Dashboard extends Component {
         <StatusBar backgroundColor='#0B81C7' />
             <View style={{backgroundColor:'#F8F8F8', flex:1}}>
                 <ImageBackground 
-                source={require('../assets/images/bg_dashboard.png')} 
+                source={require('../../assets/images/bg_dashboard.png')} 
                 style={styles.imgBg} >
 
                     <View style={styles.container}>
@@ -37,12 +38,13 @@ export default class Dashboard extends Component {
                                 </Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={[styles.content,{marginLeft:15}]}>
+                            <TouchableOpacity style={[styles.content,{marginLeft:15}]}
+                                onPress={() => this.props.navigation.navigate('Users')}>
                                 <View style={[styles.icon,{backgroundColor: '#ffa100'}]}>
-                                    <MaterialIcon style={{color:'#fff'}} size={40} name={'assignment'} />
+                                    <Icon name='accessibility' type='material' color='#fff' size={40} />
                                 </View>
                                 <Text style={styles.contentTxt}>
-                                    Open Assignment
+                                    Users Data
                                 </Text>
                             </TouchableOpacity>
                             

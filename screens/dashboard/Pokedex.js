@@ -31,7 +31,7 @@ export default class Pokedex extends Component {
     renderItem(data) {
         return(
             <TouchableOpacity style={{backgroundColor: 'transparent'}}>
-                <View  style={styles.listItemContainer}>
+                <View style={styles.listItemContainer}>
                     <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG'}} 
                             style={styles.pokeImage}/>
                     <Text style={styles.pokeItemHeader}>
