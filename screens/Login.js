@@ -1,13 +1,13 @@
 import React from 'react'
 import {View,Text,TextInput,TouchableOpacity,Alert,ScrollView,ActivityIndicator} from 'react-native'
 import styles from '../assets/styles/StyleLogin'
-//import TokenStore from '../src/tokenStore'
 
 export default class Login extends React.Component {
     static navigationOptions = {header: null}
 
     constructor (props) {
         super (props)
+        global.userToken = '',
         this.state = {
             email : '',
             password: '',
@@ -17,7 +17,7 @@ export default class Login extends React.Component {
     loginPress = async () => {
         const { email, password } = this.state
         try {
-            let response = await fetch('http://192.168.84.2:9999/auth/login',{
+            let response = await fetch('http://192.168.56.1:9999/auth/login',{
                 method: 'POST',
                 headers: {
                     Accept : 'application/json',
@@ -29,14 +29,13 @@ export default class Login extends React.Component {
                 })
             });
             let responseJson = await response.json()
-            //TokenStore.updateToken(responseJson.accessToken)
 
             if (responseJson.auth == true) {
-                //Alert.alert(JSON.stringify(TokenStore.getToken()))
-                Alert.alert('Login Successfull')
-                // setTimeout( ()=> {
-                //     this.props.navigation.navigate('Dashboard', { token: userToken, email: email })
-                // },1000 );
+                Alert.alert('Successfully logged in')
+                global.userToken = responseJson.accessToken.toString();
+                setTimeout( ()=> {
+                    this.props.navigation.navigate('Dashboard', { token: userToken, email: email })
+                },1000 );
                 
             } else {
                 Alert.alert('Input correct email or password!')
@@ -69,6 +68,12 @@ export default class Login extends React.Component {
                         returnKeyLabel={"next"}
                         onChangeText={(pass) => this.setState({ password: pass })} />
                 </View>
+
+                {/* <TouchableOpacity style={styles.btnConfirm}
+                    onPress={() => this.props.navigation.navigate('Dashboard', {email: this.state.email, name: 'Admin'})} 
+                >
+                    <Text style={{color: '#fff'}}>Log In</Text>
+                </TouchableOpacity> */}
 
                 <TouchableOpacity style={styles.btnConfirm}
                     onPress={() => this.loginPress()}>
