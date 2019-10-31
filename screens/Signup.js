@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView, } from 'react-native'
 import styles from '../assets/styles/StyleSignup'
 
 export default class Signup extends React.Component {
@@ -36,12 +36,12 @@ export default class Signup extends React.Component {
             let responseJson = await response.json()
 
             if (password != cpassword) {
-                alert('Your confirmation password did not match!')
+                Alert.alert('Your confirmation password did not match!')
             } else if( responseJson.status == 'success' ) {
-                alert('Registration successfully.')
+                Alert.alert('Registration successfully.')
                 this.props.navigation.navigate('Login');
             } else {
-                alert('You must fill all the forms or email already taken.')
+                Alert.alert('You must fill all the forms or email already taken.')
             }
 
         } catch (error) {

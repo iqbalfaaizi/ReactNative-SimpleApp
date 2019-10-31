@@ -1,6 +1,7 @@
 import React from 'react'
 import {View,Text,TextInput,TouchableOpacity,Alert,ScrollView,ActivityIndicator} from 'react-native'
 import styles from '../assets/styles/StyleLogin'
+import TokenStore from '../src/tokenStore'
 
 export default class Login extends React.Component {
     static navigationOptions = {header: null}
@@ -29,12 +30,13 @@ export default class Login extends React.Component {
                 })
             });
             let responseJson = await response.json()
-
             if (responseJson.auth == true) {
+                TokenStore.updateToken(responseJson.accessToken.toString())
                 Alert.alert('Successfully logged in')
-                global.userToken = responseJson.accessToken.toString();
+                //Alert.alert(JSON.stringify(TokenStore.getToken()))
+                
                 setTimeout( ()=> {
-                    this.props.navigation.navigate('Dashboard', { token: userToken, email: email })
+                    this.props.navigation.navigate('Dashboard', { auth: true })
                 },1000 );
                 
             } else {
