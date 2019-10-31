@@ -1,11 +1,13 @@
 # ReactNative-SimpleApp
 
 ### Features
-
-Just simple Login and Signup design..
+- Simple Login and Signup design
+- Using jwt auth for login
+- Some API example
+- etc.
 
 ---
-Using `react-native@0.60.5` and `react-navigation@4.0.10`
+Using `react-native@0.60.5`
 
 ![](https://i.ibb.co/SxF6ss4/SS1.png)
 
